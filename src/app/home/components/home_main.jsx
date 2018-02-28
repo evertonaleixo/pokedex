@@ -47,7 +47,9 @@ class Home extends React.Component {
             </div>
 
             <div style={{ float: 'left', width: '100%', marginLeft:'45px'}} className="text-center" >
-              <button className=" btn-lg btn-primary"> Estudar pokemons </button>
+              <Link to="/pokedex">
+                <button className=" btn-lg btn-primary"> Estudar pokemons </button>
+              </Link>
             </div>
           </div>
         </div>

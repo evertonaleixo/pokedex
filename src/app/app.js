@@ -11,9 +11,10 @@ const history = syncHistoryWithStore(hashHistory, store);
 const routes = {
 
   path: '/',
-  indexRoute: { onEnter: (nextState, replace) => replace('/pokedex') },
+  indexRoute: { onEnter: (nextState, replace) => replace('/home') },
   childRoutes: [
     require('./home/route').default,
+    require('./pokemon/route').default,
   ]
 };
 
