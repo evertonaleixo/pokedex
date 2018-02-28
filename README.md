@@ -1,15 +1,19 @@
-# Projeto Base
+# Pokedex
+This project is an example of react with redux to create a Pokedex.
 
-## Para executar:
+## Enviroument
+node version v6.11.5
 
-### Primeira vez
+## Execute:
+
+### First time
 npm install
 
 
-### Demais vezes
-npm run dev
+### other ones
+npm run start
 
-## Para acessar:
+## Access:
 
-Qualquer navegador na porta 2200
+Navigator in port 2200
 

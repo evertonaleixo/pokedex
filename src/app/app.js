@@ -11,26 +11,9 @@ const history = syncHistoryWithStore(hashHistory, store);
 const routes = {
 
   path: '/',
-  indexRoute: { onEnter: (nextState, replace) => replace('/home') },
+  indexRoute: { onEnter: (nextState, replace) => replace('/pokedex') },
   childRoutes: [
     require('./home/route').default,
-    // require('./routes/smartadmin-intel').default,
-    // require('./routes/widgets').default,
-    // require('./routes/outlook').default,
-    // require('./routes/tables').default,
-    // require('./routes/ui').default,
-    // require('./routes/graphs').default,
-    // require('./routes/e-commerce').default,
-    // require('./routes/misc').default,
-    // require('./routes/auth').default,
-    // require('./routes/app-views').default,
-    // require('./routes/maps').default,
-    // require('./routes/calendar').default,
-    // require('./routes/forms').default,
-
-
-    // comment unused routes
-    // this will speed up builds
   ]
 };
 
@@ -41,4 +24,4 @@ ReactDOM.render((
       routes={routes}
     />
    </Provider>
-), document.getElementById('smartadmin-root'));
+), document.getElementById('pokedex-root'));

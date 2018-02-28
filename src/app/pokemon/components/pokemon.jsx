@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux';
 
-class Car extends React.Component {
+class Pokemon extends React.Component {
 
   onAct(e) {
     this.props.onAct(this.props.id, this.props.val);
@@ -37,4 +37,4 @@ class Car extends React.Component {
 
 }
 
-export default connect()(Car);
+export default connect()(Pokemon);
