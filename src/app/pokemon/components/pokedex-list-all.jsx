@@ -1,0 +1,54 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux';
+
+import Reactable from 'reactable';
+
+class PokedexListAll extends React.Component {
+
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    var Table = Reactable.Table;
+    var Tr = Reactable.Tr;
+    var Td = Reactable.Td;
+
+    let allPokemons = [
+          {'id': 1, 'name': 'Bulbasaur'},
+          {'id': 2, 'name': 'Ivysaur'},
+          {'id': 3, 'name': 'Blastoide'},
+      ];
+
+    return (
+     <Table className="table" id="table" 
+             filterable={['id', 'name']}  >
+        {allPokemons.map((pokemon) => {
+
+          let hasInMyPokedex = pokemon.id%2==0;
+          let addBtn = hasInMyPokedex ? 'btn btn-primary fa fa-minus-circle' : 'btn btn-primary fa fa-plus-circle'
+
+          return <Tr key={pokemon.id}>
+            <Td column="id" data={pokemon.id} />
+            <Td column="name" data={pokemon.name} />
+            <Td column="icon" data={pokemon.name} />
+            <Td column="add"> 
+              <button className={addBtn}></button>
+            </Td>
+            <Td column="details"> 
+              <button className="btn btn-primary fa fa-eye"></button>
+            </Td>
+          </Tr>
+        })}
+      </Table>
+    );
+  }
+
+}
+
+export default connect()(PokedexListAll);

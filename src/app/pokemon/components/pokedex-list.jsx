@@ -5,6 +5,9 @@ import {bindActionCreators} from 'redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+import PokedexListAll from './pokedex-list-all';
+import PokedexListMy from './pokedex-list-my';
+
 class PokedexList extends React.Component {
 
   onAct(e) {
@@ -22,19 +25,23 @@ class PokedexList extends React.Component {
   }
 
   render() {
-    
     return (
       <Tabs>
         <TabList>
-          <Tab>Lista de pokemons</Tab>
-          <Tab>Pokemons registrados</Tab>
+          <Tab>Pokemons</Tab>
+          <Tab>Pokemons registered</Tab>
         </TabList>
 
         <TabPanel>
-          <h2>Lista de pokemons</h2>
+          <h2>All pokemons</h2>
+
+          <div className="col-sm-12">
+            <PokedexListAll />
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Meus pokemons</h2>
+          <h2>My pokemons</h2>
+            <PokedexListMy />
         </TabPanel>
       </Tabs>
     );
