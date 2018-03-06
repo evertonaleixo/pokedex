@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import PokedexList from './pokedex-list';
 import PokemonInfo from './pokemon-info';
+import Loading from './loading'
 
 class Pokemon extends React.Component {
 
@@ -14,11 +15,16 @@ class Pokemon extends React.Component {
   componentDidMount() {
 
   }
+  
+  loading() {
+    return <Loading />
+  }
 
   render() {
 
     return (
       <div className="container">
+        {this.props.loading && this.loading()}
         <div className="row">
           <div className="col-sm-12">
             <div style={{ float: 'left', width: '100%' }}>
@@ -43,5 +49,9 @@ class Pokemon extends React.Component {
   }
 
 }
-
-export default connect()(Pokemon);
+function mapStateToProps(state) {
+  return {
+    loading: state.pokemon_reducer.loading,
+  }
+}
+export default connect(mapStateToProps)(Pokemon);

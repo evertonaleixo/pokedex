@@ -37,6 +37,7 @@ const fetchPollsLogic = createLogic({
         if (!action.type.startsWith("ASYNC_")) {
             done();
         } else {
+            dispatch({type:"LOADING"});
             action.type = action.type.substr(6);
             let url = action.endpoint.url;
             let method = action.endpoint.method;
@@ -55,7 +56,7 @@ const fetchPollsLogic = createLogic({
                     dispatch(action);
                 })
                 .catch(err => {
-                    action.type = action.type + '_ERR';
+                    action.type = action.type + '_ERROR';
                     action = Object.assign(action, { error: true, payload: err });
                     dispatch(action);
                 })

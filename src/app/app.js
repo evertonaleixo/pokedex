@@ -34,20 +34,7 @@ store.dispatch(
     type: LOAD_ALL_POKEMON,
     endpoint: {
       method: 'GET',
-  		url: 'https://pokeapi.co/api/v2/pokemon/?limit=100',
+  		url: 'https://pokeapi.co/api/v2/pokemon/?limit=1000',
     }
   }
 );
-
-setTimeout(() => {
-  store.dispatch(
-    {
-      type: LOAD_ALL_POKEMON,
-      endpoint: {
-        method: 'GET',
-        url: 'https://pokeapi.co/api/v2/pokemon/?limit=1000',
-      }
-    }
-  );  
-}, 1000);
-

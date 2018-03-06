@@ -2,10 +2,11 @@ import {
     ADD_POKEMON_TO_POKEDEX,
     REMOVE_POKEMON_TO_POKEDEX,
     LOAD_POKEMON_INFO_SUCCESS,
+    LOAD_POKEMON_INFO_ERROR,
     LOAD_ALL_POKEMON_SUCCESS
 } from './actions_type'
 
-export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2, 'name': 'Ivysaur' }], pokedex: [1], pokemon: {} }, action) => {
+export default (state = { pokemons: [], pokedex: [], pokemon: {} }, action) => {
 
     switch (action.type) {
         case ADD_POKEMON_TO_POKEDEX:
@@ -28,11 +29,18 @@ export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2
                     id,
                 };
             });
-            return Object.assign({}, state, { pokemons: all });
+            return Object.assign({}, state, { pokemons: all, loading: false });
+
+        case "LOADING":
+            console.log("loading")
+            return Object.assign({}, state, { loading: true});
+        case LOAD_POKEMON_INFO_ERROR:
+            
+            return Object.assign({}, state, { loading: false});
         case LOAD_POKEMON_INFO_SUCCESS:
             let res = action.payload;
             let imgSrc = "/assets/img/pokemons/" + res.name.toLowerCase().replace(" ", "-") + ".png";
-console.log(res.stats.filter(x => x.stat.name == "speed")[0].base_stat)
+
             let pokemon = {
                 attributes: {
                     speed: res.stats.filter(x => x.stat.name == "speed")[0].base_stat,
@@ -51,7 +59,7 @@ console.log(res.stats.filter(x => x.stat.name == "speed")[0].base_stat)
                 name: res.name
             };
             console.log(pokemon);
-            return Object.assign({}, state, { pokemon });
+            return Object.assign({}, state, { pokemon , loading: false});
         default:
             return state
     }
