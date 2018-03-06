@@ -10,14 +10,8 @@ import PokedexListMy from './pokedex-list-my';
 
 class PokedexList extends React.Component {
 
-  onAct(e) {
-    this.props.onAct(this.props.id, this.props.val);
-  }
-
   constructor(props){
     super(props);
-
-    this.onAct = this.onAct.bind(this);
   }
 
   componentDidMount() {

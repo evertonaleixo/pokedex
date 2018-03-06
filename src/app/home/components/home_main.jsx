@@ -14,7 +14,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({name: 'Everton', num: 0});
+
   }
 
 
@@ -42,7 +42,7 @@ class Home extends React.Component {
           </div>
           
           <div className="col-sm-6">
-            <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor:'black', margin:'45px', marginTop: '140px' }}>
+            <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor:'black', margin:'45px', marginTop: '70px' }}>
               <img src="/assets/img/capa2.png" style={{ position: 'relative', left: '2px', top: '5px', width:'99%' }} />              
             </div>
 

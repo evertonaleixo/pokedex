@@ -18,3 +18,7 @@
  * - BODY
  * - CUSTOM STYLES
  */
+
+.vcenter {
+    vertical-align: middle !important;
+}

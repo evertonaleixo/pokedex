@@ -2,17 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import PokedexList from './pokedex-list';
+import PokemonInfo from './pokemon-info';
 
 class Pokemon extends React.Component {
-
-  onAct(e) {
-    this.props.onAct(this.props.id, this.props.val);
-  }
 
   constructor(props){
     super(props);
 
-    this.onAct = this.onAct.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +17,6 @@ class Pokemon extends React.Component {
 
   render() {
 
-    console.log(PokedexList)
     return (
       <div className="container">
         <div className="row">
@@ -38,8 +33,8 @@ class Pokemon extends React.Component {
           </div>
 
           <div className="col-sm-6">
-            <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor: 'black', margin: '45px', marginTop: '140px' }}>
-              { this.props.children }
+            <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor: 'black', margin: '45px', marginTop: '70px' }}>
+              <PokemonInfo />
             </div>
           </div>
         </div>

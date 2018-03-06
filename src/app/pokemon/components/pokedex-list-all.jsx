@@ -32,15 +32,18 @@ class PokedexListAll extends React.Component {
 
           let hasInMyPokedex = pokemon.id%2==0;
           let addBtn = hasInMyPokedex ? 'btn btn-primary fa fa-minus-circle' : 'btn btn-primary fa fa-plus-circle'
-
+          let imgSrc = "/assets/img/pokemons/"+pokemon.name.toLowerCase().replace(" ", "-")+".png";
+          
           return <Tr key={pokemon.id}>
-            <Td column="id" data={pokemon.id} />
-            <Td column="name" data={pokemon.name} />
-            <Td column="icon" data={pokemon.name} />
-            <Td column="add"> 
+            <Td className="vcenter" column="id" data={pokemon.id} />
+            <Td className="vcenter" column="name" data={pokemon.name} />
+            <Td className="vcenter" column="icon">
+              <img src={imgSrc} width={'50px'}/>
+            </Td>
+            <Td className="vcenter" column="add"> 
               <button className={addBtn}></button>
             </Td>
-            <Td column="details"> 
+            <Td className="vcenter" column="details"> 
               <button className="btn btn-primary fa fa-eye"></button>
             </Td>
           </Tr>
@@ -51,4 +54,10 @@ class PokedexListAll extends React.Component {
 
 }
 
-export default connect()(PokedexListAll);
+function mapStateToProps(state) {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(PokedexListAll);
