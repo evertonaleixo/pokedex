@@ -22,3 +22,7 @@
 .vcenter {
     vertical-align: middle !important;
 }
+
+.capitalize {
+    text-transform: capitalize;
+}

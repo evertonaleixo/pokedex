@@ -14,60 +14,60 @@ import axios from 'axios';
 // });
 
 const addUniqueId = createLogic({
-  type: '*',
-  transform({ getState, action }, next) {
-    // add unique tid to action.meta of every action
-    const existingMeta = action.meta || {};
-    const meta = {
-      ...existingMeta,
-      tid: 1111
-    };
-    next({
-      ...action,
-      meta
-    });
-  }
+    type: '*',
+    transform({ getState, action }, next) {
+        // add unique tid to action.meta of every action
+        const existingMeta = action.meta || {};
+        const meta = {
+            ...existingMeta,
+            tid: 1111
+        };
+        next({
+            ...action,
+            meta
+        });
+    }
 });
 
 const fetchPollsLogic = createLogic({
-  type: '*', // only apply this logic to this type
-  // cancelType: CANCEL_FETCH_POLLS, // cancel on this type
-  latest: true, // only take latest
-  process({ getState, action }, dispatch, done) {
-  	if(!action.type.startsWith("ASYNC_")) {
-  		done();
-  	} else {
-  		action.type = action.type.substr(6);
-  		let url = action.endpoint.url;
-  		let method = action.endpoint.method;
-  		let body = action.endpoint.body | {};
+    type: '*', // only apply this logic to this type
+    // cancelType: CANCEL_FETCH_POLLS, // cancel on this type
+    //latest: true, // only take latest
+    process({ getState, action }, dispatch, done) {
+        if (!action.type.startsWith("ASYNC_")) {
+            done();
+        } else {
+            action.type = action.type.substr(6);
+            let url = action.endpoint.url;
+            let method = action.endpoint.method;
+            let body = action.endpoint.body | {};
 
-  		delete action.endpoint;
+            delete action.endpoint;
 
-  		axios({
-  			method: method,
-  			url: url,
-  			data: body
-  		})
-  		.then(resp => {
-  			action.type = action.type + '_SUCCESS';
-  			action = Object.assign(action, {payload:  resp.data} );
-  			dispatch(action);
-  		})
-  		.catch(err => {
-  			action.type = action.type + '_ERR';
-  			action = Object.assign(action, {error:  true, payload: err} );
-  			dispatch(action);
-  		})
-  		.then(() => done());
-  		
-  	}
-  }
+            axios({
+                    method: method,
+                    url: url,
+                    data: body
+                })
+                .then(resp => {
+                    action.type = action.type + '_SUCCESS';
+                    action = Object.assign(action, { payload: resp.data });
+                    dispatch(action);
+                })
+                .catch(err => {
+                    action.type = action.type + '_ERR';
+                    action = Object.assign(action, { error: true, payload: err });
+                    dispatch(action);
+                })
+                .then(() => done());
+
+        }
+    }
 });
 
 // pollsLogic
 export default [
-  // validationLogic,
-  addUniqueId,
-  fetchPollsLogic
+    // validationLogic,
+    addUniqueId,
+    fetchPollsLogic
 ];

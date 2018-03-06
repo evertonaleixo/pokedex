@@ -20,20 +20,19 @@ class PokedexListMy extends React.Component {
     var Tr = Reactable.Tr;
     var Td = Reactable.Td;
 
-    let myPokemons = [
-      {'id': 1, 'name': 'Bulbasaur'},
-    ];
+    let myPokemons = this.props.pokemons.filter( pokemon => this.props.myPokemons.includes(pokemon.id) );
 
     return (
      <Table className="table" id="table" 
-             filterable={['id', 'name']}  >
+             filterable={['id', 'name']} 
+             itemsPerPage={20} pageButtonLimit={5}>
         {myPokemons.map((pokemon) => {
 
           let imgSrc = "/assets/img/pokemons/"+pokemon.name.toLowerCase().replace(" ", "-")+".png";
 
           return <Tr key={pokemon.id}>
             <Td className="vcenter" column="id" data={pokemon.id} />
-            <Td className="vcenter" column="name" data={pokemon.name} />
+            <Td className="vcenter capitalize" column="name" data={pokemon.name} />
             <Td className="vcenter" column="icon">
               <img src={imgSrc} width={'50px'}/>
             </Td>
@@ -51,7 +50,8 @@ class PokedexListMy extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    
+    pokemons: state.pokemon_reducer.pokemons,
+    myPokemons: state.pokemon_reducer.pokedex,
   }
 }
 

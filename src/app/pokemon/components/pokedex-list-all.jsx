@@ -19,15 +19,12 @@ class PokedexListAll extends React.Component {
     var Tr = Reactable.Tr;
     var Td = Reactable.Td;
 
-    let allPokemons = [
-          {'id': 1, 'name': 'Bulbasaur'},
-          {'id': 2, 'name': 'Ivysaur'},
-          {'id': 3, 'name': 'Blastoide'},
-      ];
+    let allPokemons = this.props.pokemons;
 
     return (
      <Table className="table" id="table" 
-             filterable={['id', 'name']}  >
+             filterable={['id', 'name']}  
+             itemsPerPage={20} pageButtonLimit={5}>
         {allPokemons.map((pokemon) => {
 
           let hasInMyPokedex = pokemon.id%2==0;
@@ -36,7 +33,7 @@ class PokedexListAll extends React.Component {
           
           return <Tr key={pokemon.id}>
             <Td className="vcenter" column="id" data={pokemon.id} />
-            <Td className="vcenter" column="name" data={pokemon.name} />
+            <Td className="vcenter capitalize" column="name" data={pokemon.name} />
             <Td className="vcenter" column="icon">
               <img src={imgSrc} width={'50px'}/>
             </Td>
@@ -56,7 +53,8 @@ class PokedexListAll extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    
+    pokemons: state.pokemon_reducer.pokemons,
+    myPokemons: state.pokemon_reducer.pokedex,
   }
 }
 

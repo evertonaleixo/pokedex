@@ -25,7 +25,7 @@ class PokemonInfo extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    
+    pokemon: state.pokemon_reducer.pokemon
   }
 }
 

@@ -5,7 +5,7 @@ import {
     LOAD_ALL_POKEMON_SUCCESS
 } from './actions_type'
 
-export default (state = { pokemons: [{}], pokedex: [], pokemon: {} }, action) => {
+export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2, 'name': 'Ivysaur' }], pokedex: [1], pokemon: {} }, action) => {
 
     switch (action.type) {
         case ADD_POKEMON_TO_POKEDEX:
@@ -21,8 +21,16 @@ export default (state = { pokemons: [{}], pokedex: [], pokemon: {} }, action) =>
             return Object.assign({}, state, {});
         case LOAD_ALL_POKEMON_SUCCESS:
             // state.cars_dealership.push(action.payload);
-
-            return Object.assign({}, state, {});
+            console.log(action);
+            let all = action.payload.results.map(res => {
+                let id = parseInt(res.url.substring(res.url.lastIndexOf('pokemon/') + 8, res.url.length - 1));
+                return {
+                    name: res.name.replace("-", " "),
+                    url: res.url,
+                    id,
+                };
+            });
+            return Object.assign({}, state, { pokemons: all });
         case LOAD_POKEMON_INFO_SUCCESS:
             // state.cars_dealership.push(action.payload);
 
