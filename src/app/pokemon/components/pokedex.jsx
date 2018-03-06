@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { pokedexList } from './pokedex-list'
+import PokedexList from './pokedex-list';
 
 class Pokemon extends React.Component {
 
@@ -21,6 +21,7 @@ class Pokemon extends React.Component {
 
   render() {
 
+    console.log(PokedexList)
     return (
       <div className="container">
         <div className="row">
@@ -33,7 +34,7 @@ class Pokemon extends React.Component {
           </div>
 
           <div className="col-sm-6" style={{ borderRight: '1px dashed', minHeight: '95h' }}>
-            <pokedexList />
+            <PokedexList />
           </div>
 
           <div className="col-sm-6">

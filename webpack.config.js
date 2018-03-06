@@ -22,9 +22,9 @@ module.exports = (env) => {
         entry: {
             main: './src/app/main.js',
             vendor: [
-                'react', 'react-dom', 'moment', 'jquery',
+                'react', 'react-dom', // 'moment', 'jQuery', 'xmlhttprequest',
                 // 'jquery-ui', 'bootstrap', , 'jquery', 'lodash'
-                'react-bootstrap'
+                'react-bootstrap', 'bootstrap'
             ]
         },
         output: {
@@ -117,9 +117,6 @@ module.exports = (env) => {
             fs: "empty",
             tls: "empty",
             net: "empty",
-            navigator: "empty",
-            xmlhttprequest: "empty",
-            location: "empty",
             child_process: "empty",
         },
         devtool: isDev ? 'eval' : 'cheap-source-map', //false, //isDev ? 'eval' : 'cheap-source-map',
@@ -144,6 +141,11 @@ module.exports = (env) => {
                 filename: 'js/[hash].vendor.js',
 
                 minChunks: Infinity,
+            }),
+
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery'
             }),
 
             new webpack.DefinePlugin({

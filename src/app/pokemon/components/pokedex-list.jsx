@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux';
 
-class Pokemon extends React.Component {
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
+class PokedexList extends React.Component {
 
   onAct(e) {
     this.props.onAct(this.props.id, this.props.val);
@@ -19,22 +22,24 @@ class Pokemon extends React.Component {
   }
 
   render() {
-    let inlineStyle = {
-      background: 'white',
-      display: 'inline-block',
-      padding: 20,
-      margin: 10
-    };
-
+    
     return (
-      <div style={inlineStyle}>
-        <p> Modelo: {this.props.model} </p>
-        <p> Valor: {this.props.val} </p>
-        <p> <button className='btn btn-success' onClick={ this.onAct } > {this.props.toBuy ?  'Comprar' : 'Vender' } </button>   </p>
-      </div>
+      <Tabs>
+        <TabList>
+          <Tab>Lista de pokemons</Tab>
+          <Tab>Pokemons registrados</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Lista de pokemons</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Meus pokemons</h2>
+        </TabPanel>
+      </Tabs>
     );
   }
 
 }
 
-export default connect()(Pokemon);
+export default connect()(PokedexList);

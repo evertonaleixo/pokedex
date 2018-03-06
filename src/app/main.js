@@ -10,6 +10,7 @@ import 'core-js/es6/object'
 
 require("bootstrap");
 
+
 require.ensure([], () => {
     require('./app');
 
