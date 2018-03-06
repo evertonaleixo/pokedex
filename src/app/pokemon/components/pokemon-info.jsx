@@ -16,23 +16,28 @@ class PokemonInfo extends React.Component {
     let pokemon = this.props.pokemon;
     return (
       <div>
-        <h1> {pokemon.name} </h1>
-        <img src={pokemon.img}/>
+        <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor: 'black', margin: '45px', marginTop: '70px', textAlign: 'center' }}>
+          <img src={pokemon.image} width={"400px"}/>
+        </div>
+        <div>
+          <h1> Nome: {pokemon.name} </h1>
+          
 
-        <h4> Height: { pokemon.height } </h4>
-        <h4> Weight: { pokemon.weight } </h4>
-        <h3> Attributes </h3>
-        
-        <h4>attack: { pokemon.attribute && pokemon.attribute.attack} </h4>
-        <h4>defense: { pokemon.attribute && pokemon.attribute.defense} </h4>
-        <h4>special_attack: { pokemon.attribute && pokemon.attribute.special_attack} </h4>
-        <h4>special_defense: { pokemon.attribute && pokemon.attribute.special_defense} </h4>
-        <h4>speed: { pokemon.attribute && pokemon.attribute.speed} </h4>
-        <h4>hp: { pokemon.attribute && pokemon.attribute.hp} </h4>
-        
-        <h3> Abilities </h3> 
-        {pokemon.abilities && pokemon.abilities.map((hability) => {return <h4> {hability} </h4> } )}
-      </div> 
+          <h4> Height: { pokemon.height } </h4>
+          <h4> Weight: { pokemon.weight } </h4>
+          <h3> Attributes </h3>
+          
+          <h4>Attack: { pokemon.attributes && pokemon.attributes.attack} </h4>
+          <h4>Defense: { pokemon.attributes && pokemon.attributes.defense} </h4>
+          <h4>Special attack: { pokemon.attributes && pokemon.attributes.special_attack} </h4>
+          <h4>Special defense: { pokemon.attributes && pokemon.attributes.special_defense} </h4>
+          <h4>Speed: { pokemon.attributes && pokemon.attributes.speed} </h4>
+          <h4>HP: { pokemon.attributes && pokemon.attributes.hp} </h4>
+          
+          <h3> Abilities </h3> 
+          {pokemon.abilities && pokemon.abilities.map((hability, idx) => {return <h4 key={idx}> {hability} </h4> } )}
+        </div>
+      </div>
     );
   }
 

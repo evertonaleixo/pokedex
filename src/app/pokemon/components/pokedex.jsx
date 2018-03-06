@@ -33,9 +33,9 @@ class Pokemon extends React.Component {
           </div>
 
           <div className="col-sm-6">
-            <div style={{ minHeight: '45vh', float: 'left', width: '100%', backgroundColor: 'black', margin: '45px', marginTop: '70px' }}>
-              <PokemonInfo />
-            </div>
+            
+            <PokemonInfo />
+
           </div>
         </div>
       </div>

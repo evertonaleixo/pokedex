@@ -32,15 +32,15 @@ export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2
         case LOAD_POKEMON_INFO_SUCCESS:
             let res = action.payload;
             let imgSrc = "/assets/img/pokemons/" + res.name.toLowerCase().replace(" ", "-") + ".png";
-
+console.log(res.stats.filter(x => x.stat.name == "speed")[0].base_stat)
             let pokemon = {
                 attributes: {
-                    speed: res.stats.filter(x => x.stat.name == "speed").base_stat,
-                    special_defense: res.stats.filter(x => x.stat.name == "special-defense").base_stat,
-                    special_attack: res.stats.filter(x => x.stat.name == "special-attack").base_stat,
-                    defense: res.stats.filter(x => x.stat.name == "defense").base_stat,
-                    attack: res.stats.filter(x => x.stat.name == "attack").base_stat,
-                    hp: res.stats.filter(x => x.stat.name == "hp").base_stat
+                    speed: res.stats.filter(x => x.stat.name == "speed")[0].base_stat,
+                    special_defense: res.stats.filter(x => x.stat.name == "special-defense")[0].base_stat,
+                    special_attack: res.stats.filter(x => x.stat.name == "special-attack")[0].base_stat,
+                    defense: res.stats.filter(x => x.stat.name == "defense")[0].base_stat,
+                    attack: res.stats.filter(x => x.stat.name == "attack")[0].base_stat,
+                    hp: res.stats.filter(x => x.stat.name == "hp")[0].base_stat
                 },
                 height: res.height,
                 weight: res.weight,
