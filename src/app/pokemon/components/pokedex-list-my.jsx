@@ -15,6 +15,10 @@ class PokedexListMy extends React.Component {
 
   }
 
+  showPokemon(pokemon) {
+    console.log(pokemon);
+  }
+
   render() {
     var Table = Reactable.Table;
     var Tr = Reactable.Tr;
@@ -38,7 +42,7 @@ class PokedexListMy extends React.Component {
             </Td>
             
             <Td className="vcenter" column="details"> 
-              <button className="btn btn-primary fa fa-eye"></button>
+              <button className="btn btn-primary fa fa-eye" onClick={() => { this.showPokemon(pokemon); }}></button>
             </Td>
           </Tr>
         })}

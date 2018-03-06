@@ -9,19 +9,17 @@ export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2
 
     switch (action.type) {
         case ADD_POKEMON_TO_POKEDEX:
-            // let buyedCar = state.cars_dealership[action.payload];
-            // delete state.cars_dealership[action.payload];
+            state.pokedex.push(action.payload);
 
-            // state.cars_garage.push(buyedCar);
-
-            return Object.assign({}, state, {});
+            return {...state };
         case REMOVE_POKEMON_TO_POKEDEX:
-            // delete state.cars_garage[action.payload];
+            let idx = state.pokedex.findIndex(x => x == action.payload);
 
-            return Object.assign({}, state, {});
+            delete state.pokedex[idx];
+
+            return {...state };
         case LOAD_ALL_POKEMON_SUCCESS:
-            // state.cars_dealership.push(action.payload);
-            console.log(action);
+
             let all = action.payload.results.map(res => {
                 let id = parseInt(res.url.substring(res.url.lastIndexOf('pokemon/') + 8, res.url.length - 1));
                 return {
@@ -32,9 +30,28 @@ export default (state = { pokemons: [{ 'id': 1, 'name': 'Bulbasaur' }, { 'id': 2
             });
             return Object.assign({}, state, { pokemons: all });
         case LOAD_POKEMON_INFO_SUCCESS:
-            // state.cars_dealership.push(action.payload);
+            let res = action.payload;
+            let imgSrc = "/assets/img/pokemons/" + res.name.toLowerCase().replace(" ", "-") + ".png";
 
-            return Object.assign({}, state, {});
+            let pokemon = {
+                attributes: {
+                    speed: res.stats.filter(x => x.stat.name == "speed").base_stat,
+                    special_defense: res.stats.filter(x => x.stat.name == "special-defense").base_stat,
+                    special_attack: res.stats.filter(x => x.stat.name == "special-attack").base_stat,
+                    defense: res.stats.filter(x => x.stat.name == "defense").base_stat,
+                    attack: res.stats.filter(x => x.stat.name == "attack").base_stat,
+                    hp: res.stats.filter(x => x.stat.name == "hp").base_stat
+                },
+                height: res.height,
+                weight: res.weight,
+                abilities: res.abilities.map(h => {
+                    return h.ability.name
+                }),
+                image: imgSrc,
+                name: res.name
+            };
+            console.log(pokemon);
+            return Object.assign({}, state, { pokemon });
         default:
             return state
     }

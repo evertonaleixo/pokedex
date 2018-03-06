@@ -1,21 +1,37 @@
-import { LOAD_POKEMON_INFO } from '../reducers/actions_type';
-import GenericRemoteService from '../../store/generic_service';
+import { LOAD_POKEMON_INFO, ADD_POKEMON_TO_POKEDEX, REMOVE_POKEMON_TO_POKEDEX } from '../reducers/actions_type';
+import store from '../../store/configureStore';
 
-let endpoint = 'https://pokeapi.co/api/v2/pokemon/';
-let mapping = {
-    getAction: LOAD_POKEMON_INFO
-}
 
-class PokemonService extends GenericRemoteService {
+class PokemonService {
 
-    constructor(endpoint, mappingActions) {
-        super(endpoint, mappingActions);
+    constructor() {
+
     }
 
-    loadCarsAction() {
-        return super.callGenericAction(LOAD_CAR);
+    getPokemonInfo(pokemon) {
+        store.dispatch({
+            type: LOAD_POKEMON_INFO,
+            endpoint: {
+                url: pokemon.url,
+                method: 'get',
+            },
+        });
+    }
+
+    addPokemonInPokedex(id) {
+        store.dispatch({
+            type: ADD_POKEMON_TO_POKEDEX,
+            payload: id,
+        });
+    }
+
+    removePokemonFromPokedex(id) {
+        store.dispatch({
+            type: REMOVE_POKEMON_TO_POKEDEX,
+            payload: id,
+        });
     }
 
 }
 
-export default new PokemonService(endpoint, mapping);
+export default new PokemonService();
