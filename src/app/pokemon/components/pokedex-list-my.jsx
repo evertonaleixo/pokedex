@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux';
 
 import Reactable from 'reactable';
-
+import PokemonAction from '../services/pokemon_service';
 
 class PokedexListMy extends React.Component {
 

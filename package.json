@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
         "build": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env production",
-        "postinstall": "npm start -s build",
+        "postinstall": "run-s build",
         "build-dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env development",
         "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --progress --env development",
         "start:prod": "node app",
