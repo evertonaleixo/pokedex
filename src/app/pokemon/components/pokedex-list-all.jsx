@@ -18,18 +18,14 @@ class PokedexListAll extends React.Component {
 
   handlePokedex(id, hasInMyPokedex) {
     if (hasInMyPokedex) {
-      console.log('removing')
       PokemonAction.removePokemonFromPokedex(id);
     } else {
-      console.log('adding')      
       PokemonAction.addPokemonInPokedex(id);
     }
-    console.log(hasInMyPokedex);
     this.setState({});
   }
 
   showPokemon(pokemon){
-    console.log(pokemon);
     PokemonAction.getPokemonInfo(pokemon);
   }
 

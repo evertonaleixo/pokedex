@@ -16,7 +16,7 @@ class PokedexListMy extends React.Component {
   }
 
   showPokemon(pokemon) {
-    console.log(pokemon);
+    PokemonAction.getPokemonInfo(pokemon);
   }
 
   render() {
