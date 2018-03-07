@@ -6,8 +6,10 @@
     "private": true,
     "scripts": {
         "build": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env production",
+        "postinstall": "npm start -s build",
         "build-dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env development",
         "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --progress --env development",
+        "start:prod": "node app",
         "test": "NODE_ENV=test jest"
     },
     "dependencies": {
@@ -16,6 +18,8 @@
         "chart.js": "2.6.0",
         "classnames": "2.2.5",
         "clockpicker": "0.0.7",
+        "ejs": "^2.5.7",
+        "express": "^4.16.2",
         "jquery": "^3.3.1",
         "lodash": "4.17.4",
         "prop-types": "15.5.10",
