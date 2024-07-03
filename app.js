@@ -11,7 +11,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('/', function (req, res) {
-  res.render('index.html');
+  res.render('index2.html');
 });
 
 app.listen(port, () => console.log('Server running on port ' + port));
