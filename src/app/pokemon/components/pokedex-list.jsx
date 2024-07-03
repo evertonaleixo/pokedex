@@ -15,10 +15,14 @@ class PokedexList extends React.Component {
   }
 
   componentDidMount() {
-
+console.log('CDM')
   }
 
   render() {
+    const h2 = (title) => {
+      return <h2>{title}</h2>
+    }
+
     return (
       <Tabs>
         <TabList>
@@ -27,14 +31,13 @@ class PokedexList extends React.Component {
         </TabList>
 
         <TabPanel>
-          <h2>All pokemons</h2>
-
+          {h2('Todos os Pokemons')}
           <div className="col-sm-12">
             <PokedexListAll />
           </div>
         </TabPanel>
         <TabPanel>
-          <h2>My pokemons</h2>
+          {h2('My pokemons')}
             <PokedexListMy />
         </TabPanel>
       </Tabs>
