@@ -13,18 +13,14 @@ class Pokemon extends React.Component {
   }
 
   componentDidMount() {
-
-  }
-  
-  loading() {
-    return <Loading />
+    console.log('CDM')
   }
 
   render() {
 
     return (
       <div className="container">
-        {this.props.loading && this.loading()}
+        {this.props.loading && <Loading />}
         <div className="row">
           <div className="col-sm-12">
             <div style={{ float: 'left', width: '100%' }}>
@@ -34,14 +30,12 @@ class Pokemon extends React.Component {
             </div>
           </div>
 
-          <div className="col-sm-6" style={{ borderRight: '1px dashed', minHeight: '95h' }}>
+          <div className="col-sm-6 col-md-12" style={{ borderRight: '1px dashed', minHeight: '85h' }}>
             <PokedexList />
           </div>
 
-          <div className="col-sm-6">
-            
+          <div className="col-sm-6 col-md-12">
             <PokemonInfo />
-
           </div>
         </div>
       </div>
@@ -50,8 +44,9 @@ class Pokemon extends React.Component {
 
 }
 function mapStateToProps(state) {
+  const loading = state.pokemon_reducer.loading
   return {
-    loading: state.pokemon_reducer.loading,
+    loading: loading,
   }
 }
-export default connect(mapStateToProps)(Pokemon);
+export default connet(mapStateToProps)(Pokemon);

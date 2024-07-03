@@ -46,6 +46,10 @@ class PokedexListAll extends React.Component {
 
           let addBtn = hasInMyPokedex ? 'btn btn-primary fa fa-plus-circle' : 'btn btn-primary fa fa-minus-circle'
           let imgSrc = "/assets/img/pokemons/"+pokemon.name.toLowerCase().replace(" ", "-")+".png";
+          if (imgSrc === "pokemons" && hasInMyPokedex) {
+            console.log('Aqui');
+            imgSrc = "test/pokemon.jpg"
+          }
           
           return <Tr key={pokemon.id}>
             <Td className="vcenter" column="id" data={pokemon.id} />
@@ -53,11 +57,14 @@ class PokedexListAll extends React.Component {
             <Td className="vcenter" column="icon">
               <img src={imgSrc} width={'50px'}/>
             </Td>
-            <Td className="vcenter" column="In pokedex?"> 
-              <button className={addBtn} onClick={()=>{ this.handlePokedex(pokemon.id, hasInMyPokedex); }}></button>
+            <Td>
+              Tests to create big Change.
             </Td>
             <Td className="vcenter" column="details"> 
               <button className="btn btn-primary fa fa-eye" onClick={() => { this.showPokemon(pokemon); }}></button>
+            </Td>
+            <Td className="vcenter" column="In pokedex?"> 
+              <button className={addBtn} onClick={()=>{ this.handlePokedex(pokemon.id, hasInMyPokedex); }}></button>
             </Td>
           </Tr>
         })}
